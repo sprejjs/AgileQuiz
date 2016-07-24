@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/single_choice_fragment_question"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text = "Who is responsible for prioritizing the product backlog?"/>
+
+    <RadioGroup
+        android:id="@+id/single_choice_fragment_radio_group"
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <RadioButton
+            android:id="@+id/single_choice_fragment_option_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Product Owner"/>
+
+        <RadioButton
+            android:id="@+id/single_choice_fragment_option_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Project Manager"/>
+
+        <RadioButton
+            android:id="@+id/single_choice_fragment_option_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Lead Developer"/>
+
+        <RadioButton
+            android:id="@+id/single_choice_fragment_option_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Tester"/>
+
+    </RadioGroup>
+
+
+</LinearLayout>

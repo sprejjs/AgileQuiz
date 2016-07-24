@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/free_from_fragment_question"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text = "@string/sm_role_question"/>
+
+    <EditText
+        android:layout_marginTop="8dp"
+        android:id="@+id/free_form_fragment_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/free_form_fragment_hint"/>
+
+</LinearLayout>

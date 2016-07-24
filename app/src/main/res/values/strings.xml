@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Agile Quiz</string>
+
+    <!-- Who is responsible for product backlog question -->
+    <string name="pb_question">Who is responsible for prioritizing the product backlog?</string>
+    <string name="pb_choice1">Product Owner</string>
+    <string name="pb_choice2">Project Manager</string>
+    <string name="pb_choice3">Lead Developer</string>
+    <string name="pb_choice4">Tester</string>
+
+    <!-- Which one of the following is not a Scrum artifact? -->
+    <string name="sa_question">Which one of the following is not a Scrum artifact?</string>
+    <string name="sa_choice1">Product Backlog</string>
+    <string name="sa_choice2">Story</string>
+    <string name="sa_choice3">Sprint Backlog</string>
+    <string name="sa_choice4">Burndown Chart</string>
+
+    <!-- Which of the following are not Scrum roles -->
+    <string name="sr_question">Which of the following are not a Scrum role?</string>
+    <string name="sr_choice1">Product Owner</string>
+    <string name="sr_choice2">Scrum Master</string>
+    <string name="sr_choice3">Product Manager</string>
+    <string name="sr_choice4">Delivery Manager</string>
+
+    <!-- Which of the following meetings is not part of Scrum? -->
+    <string name="sm_question">Which of the following meetings is not part of Scrum?</string>
+    <string name="sm_choice1">Product review meeting</string>
+    <string name="sm_choice2">Sprint review meeting</string>
+    <string name="sm_choice3">Project launch celebration</string>
+    <string name="sm_choice4">Sprint retrospective meeting</string>
+
+    <!-- Who is a scrum master? -->
+    <string name="sm_role_question">A scrum [_____] is the facilitator for a product development team that uses scrum, a rugby analogy for a development methodology that allows a team to self-organize and make changes quickly. The scrum master manages the process for how information is exchanged.</string>
+    <string name="sm_role_answer">master</string>
+    <string name="free_form_fragment_hint">Fill the black line here.</string>
+</resources>
