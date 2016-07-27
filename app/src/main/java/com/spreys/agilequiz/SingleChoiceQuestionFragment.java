@@ -63,7 +63,8 @@ public class SingleChoiceQuestionFragment extends Fragment implements IQuestionF
     }
 
     public boolean triggerAnswer() {
-        return radioGroup.getCheckedRadioButtonId();
+        return ((RadioButton)radioGroup.findViewById(radioGroup.getCheckedRadioButtonId()))
+                .getText().equals(correctAnswer);
     }
 
     private void prepareView() {
@@ -77,7 +78,7 @@ public class SingleChoiceQuestionFragment extends Fragment implements IQuestionF
             radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                    ((MainActivity)getActivity()).answerPicked();
+                    ((MainActivity)getActivity()).answerPicked(true);
                 }
             });
         }

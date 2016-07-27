@@ -9,8 +9,13 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created with Android Studio
@@ -48,27 +53,20 @@ public class MultiChoiceQuestionFragment extends Fragment implements IQuestionFr
         return view;
     }
 
+    @OnClick({R.id.multi_choice_fragment_option_1, R.id.multi_choice_fragment_option_2,
+            R.id.multi_choice_fragment_option_3, R.id.multi_choice_fragment_option_4})
+    public void onCheckedChanged(){
+        ((MainActivity)getActivity())
+                .answerPicked(txtOption1.isChecked() || txtOption2.isChecked()
+                        || txtOption3.isChecked() || txtOption4.isChecked());
+    }
+
     public void setQuestion(String question, String[] choices, String correctAnswers[]) {
         this.question = question;
         this.choices = choices;
         this.correctAnswers = correctAnswers;
 
         prepareView();
-    }
-
-    public boolean submitAnswer(int[] answerIds) {
-        if (answerIds.length != correctAnswers.length) {
-            return false;
-        }
-
-        boolean allAnswersCorrect = true;
-
-        for (int i = 0; i < answerIds.length; i++) {
-            if(!choices[answerIds[i]].equals(correctAnswers[i])) {
-                allAnswersCorrect = false;
-            }
-        }
-        return allAnswersCorrect;
     }
 
     private void prepareView() {
@@ -79,5 +77,28 @@ public class MultiChoiceQuestionFragment extends Fragment implements IQuestionFr
             txtOption4.setText(choices[3]);
             txtQuestion.setText(question);
         }
+    }
+
+    @Override
+    public boolean triggerAnswer() {
+        ArrayList<String> selectedAnswers = new ArrayList<>();
+
+        if (txtOption1.isChecked()) {
+            selectedAnswers.add(txtOption1.getText().toString());
+        }
+
+        if (txtOption2.isChecked()) {
+            selectedAnswers.add(txtOption2.getText().toString());
+        }
+
+        if (txtOption3.isChecked()) {
+            selectedAnswers.add(txtOption3.getText().toString());
+        }
+
+        if (txtOption4.isChecked()) {
+            selectedAnswers.add(txtOption4.getText().toString());
+        }
+
+        return Arrays.equals(selectedAnswers.toArray(), correctAnswers);
     }
 }

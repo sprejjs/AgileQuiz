@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.matthewtamlin.sliding_intro_screen_library.indicators.DotIndicator;
 
@@ -47,10 +48,7 @@ public class MainActivity extends FragmentActivity {
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                //Disable the swipe gesture
-                if  (positionOffset > 0.5) {
-                    mPager.setCurrentItem(position, true);
-                }
+                //This method has been intentionally left empty
             }
 
             @Override
@@ -68,19 +66,32 @@ public class MainActivity extends FragmentActivity {
     @OnClick(R.id.btn_next)
     public void nextAnswer() {
         mPagerAdapter.triggerAnswer(mPager.getCurrentItem());
+
+        if(mPagerAdapter.getCount() - 1 == mPager.getCurrentItem()) {
+            //The quiz is over
+            Toast.makeText(
+                    this,
+                    String.format(
+                            "The quiz is over. You answered %s out of %s questions correctly",
+                            mPagerAdapter.getAmountOfCorrectAnswer(),
+                            mPagerAdapter.getCount()
+                    ),
+                    Toast.LENGTH_LONG)
+                    .show();
+        } else {
+            mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
+        }
+
+        btnNext.setEnabled(false);
     }
 
-    public void answerPicked() {
-        btnNext.setEnabled(true);
+    public void answerPicked(boolean picked) {
+        btnNext.setEnabled(picked);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        int amountOfCorrectAnswers = 0;
         private List<IQuestionFragment> questionFragments;
-
-        public void triggerAnswer(int position) {
-            IQuestionFragment currentFragment = (IQuestionFragment)getItem(position);
-            currentFragment
-        }
 
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
@@ -130,6 +141,18 @@ public class MainActivity extends FragmentActivity {
             FreeFormQuestionFragment smRoleFragment = new FreeFormQuestionFragment();
             smRoleFragment.setQuestion(getString(R.string.sm_role_question), getString(R.string.sm_role_answer));
             questionFragments.add(smRoleFragment);
+        }
+
+        public int getAmountOfCorrectAnswer() {
+            return amountOfCorrectAnswers;
+        }
+
+        public void triggerAnswer(int position) {
+            IQuestionFragment currentFragment = (IQuestionFragment)getItem(position);
+
+            if(currentFragment.triggerAnswer()) {
+                amountOfCorrectAnswers++;
+            }
         }
 
         @Override

@@ -18,6 +18,7 @@
         android:id="@+id/free_form_fragment_answer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/free_form_fragment_hint"/>
+        android:hint="@string/free_form_fragment_hint"
+        android:singleLine="true"/>
 
 </LinearLayout>

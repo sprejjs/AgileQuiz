@@ -9,4 +9,5 @@ package com.spreys.agilequiz;
  *         Contact by: vlad@spreys.com
  */
 public interface IQuestionFragment {
+    boolean triggerAnswer();
 }
