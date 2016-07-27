@@ -10,4 +10,5 @@ package com.spreys.agilequiz;
  */
 public interface IQuestionFragment {
     boolean triggerAnswer();
+    void restart();
 }

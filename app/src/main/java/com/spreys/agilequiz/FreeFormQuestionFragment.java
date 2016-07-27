@@ -78,4 +78,11 @@ public class FreeFormQuestionFragment extends Fragment implements IQuestionFragm
     public boolean triggerAnswer() {
         return editTextResponse.getText().toString().toLowerCase().equals(answer.toLowerCase());
     }
+
+    @Override
+    public void restart() {
+        if(isAdded()) {
+            editTextResponse.setText("");
+        }
+    }
 }

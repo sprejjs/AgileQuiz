@@ -78,6 +78,8 @@ public class MainActivity extends FragmentActivity {
                     ),
                     Toast.LENGTH_LONG)
                     .show();
+            mPager.setCurrentItem(0, false);
+            mPagerAdapter.restart();
         } else {
             mPager.setCurrentItem(mPager.getCurrentItem() + 1, true);
         }
@@ -141,6 +143,14 @@ public class MainActivity extends FragmentActivity {
             FreeFormQuestionFragment smRoleFragment = new FreeFormQuestionFragment();
             smRoleFragment.setQuestion(getString(R.string.sm_role_question), getString(R.string.sm_role_answer));
             questionFragments.add(smRoleFragment);
+        }
+
+        public void restart() {
+            amountOfCorrectAnswers = 0;
+
+            for(IQuestionFragment fragment : questionFragments) {
+                fragment.restart();
+            }
         }
 
         public int getAmountOfCorrectAnswer() {

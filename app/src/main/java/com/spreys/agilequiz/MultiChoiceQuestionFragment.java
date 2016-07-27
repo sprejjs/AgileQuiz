@@ -101,4 +101,12 @@ public class MultiChoiceQuestionFragment extends Fragment implements IQuestionFr
 
         return Arrays.equals(selectedAnswers.toArray(), correctAnswers);
     }
+
+    @Override
+    public void restart() {
+        txtOption1.setChecked(false);
+        txtOption2.setChecked(false);
+        txtOption3.setChecked(false);
+        txtOption4.setChecked(false);
+    }
 }

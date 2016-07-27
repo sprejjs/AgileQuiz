@@ -67,6 +67,16 @@ public class SingleChoiceQuestionFragment extends Fragment implements IQuestionF
                 .getText().equals(correctAnswer);
     }
 
+    @Override
+    public void restart() {
+        if (isAdded()) {
+            txtOption1.setChecked(false);
+            txtOption2.setChecked(false);
+            txtOption3.setChecked(false);
+            txtOption4.setChecked(false);
+        }
+    }
+
     private void prepareView() {
         if (isAdded()) {
             txtOption1.setText(choices[0]);
